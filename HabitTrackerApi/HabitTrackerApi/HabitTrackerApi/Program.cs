@@ -1,4 +1,5 @@
 using HabitTrackerApi.Contexts;
+using HabitTrackerApi.Data;
 using HabitTrackerApi.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
@@ -78,6 +79,13 @@ builder.Services.AddScoped<JwtService>();
 
 
 var app = builder.Build();
+
+using (var scope = app.Services.CreateScope())
+{
+    var services = scope.ServiceProvider;
+    var context = services.GetRequiredService<DataContext>();
+    SeedData.Initialize(services, context);
+}
 
 app.UseCors("AllowFrontend");
 

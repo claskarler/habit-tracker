@@ -62,7 +62,7 @@ namespace HabitTrackerApi.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("Habits");
+                    b.ToTable("Habits", (string)null);
                 });
 
             modelBuilder.Entity("HabitTrackerApi.Entities.HabitEntryEntity", b =>
@@ -86,7 +86,7 @@ namespace HabitTrackerApi.Migrations
 
                     b.HasIndex("HabitId");
 
-                    b.ToTable("HabitEntries");
+                    b.ToTable("HabitEntries", (string)null);
                 });
 
             modelBuilder.Entity("HabitTrackerApi.Entities.IconEntity", b =>
@@ -107,7 +107,7 @@ namespace HabitTrackerApi.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Icons");
+                    b.ToTable("Icons", (string)null);
                 });
 
             modelBuilder.Entity("HabitTrackerApi.Entities.UserEntity", b =>
@@ -135,7 +135,7 @@ namespace HabitTrackerApi.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Users");
+                    b.ToTable("Users", (string)null);
                 });
 
             modelBuilder.Entity("HabitTrackerApi.Entities.HabitEntity", b =>

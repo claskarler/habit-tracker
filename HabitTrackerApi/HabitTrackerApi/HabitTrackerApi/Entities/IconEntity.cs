@@ -8,6 +8,4 @@ public class IconEntity
     public int Id { get; set; }
     public string Name { get; set; } = null!;
     public string CssClass { get; set; } = null!;
-
-    public ICollection<HabitEntity> Habits { get; set; } = [];
 }
