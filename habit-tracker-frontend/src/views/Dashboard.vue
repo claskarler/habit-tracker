@@ -1,8 +1,14 @@
 <script setup>
+import LogoutButton from '../components/LogoutButton.vue';
+
 </script>
 
 <template>
-  <h1>Dashboard</h1>
+  <div class="container mt-5">
+    <h1>Dashboard</h1>
+    <LogoutButton />
+  </div>
+
 </template>
 
 <style scoped>
