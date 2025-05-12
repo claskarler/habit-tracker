@@ -7,7 +7,7 @@ const router = useRouter()
 
 const handleLogout = () => {
   auth.logout()
-  router.push('/login')
+  router.push('/')
 }
 </script>
 
