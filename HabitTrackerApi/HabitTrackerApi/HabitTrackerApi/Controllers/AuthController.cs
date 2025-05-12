@@ -52,7 +52,7 @@ public class AuthController(DataContext db, JwtService jwt) : ControllerBase
     [HttpPut("update")]
     public async Task<IActionResult> UpdateUser(UpdateUserRequest request)
     {
-        var userId = User.FindFirstValue(ClaimTypes.NameIdentifier); // Get user id from token
+        var userId = User.FindFirstValue(ClaimTypes.NameIdentifier); 
         var user = await _db.Users.FirstOrDefaultAsync(u => u.Id.ToString() == userId);
 
         if (user == null)
