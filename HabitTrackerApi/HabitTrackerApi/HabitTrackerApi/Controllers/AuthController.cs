@@ -45,7 +45,17 @@ public class AuthController(DataContext db, JwtService jwt) : ControllerBase
 
         var token = _jwt.GenerateToken(user.Id, user.Username);
 
-        return Ok(new AuthResponse { Token = token });
+        var userDto = new UserDto
+        {
+            Id = user.Id,
+            Username = user.Username,
+            Email = user.Email
+        };
+
+        return Ok(new AuthResponse { 
+            Token = token,
+            User = userDto
+        });
     }
 
     [Authorize]

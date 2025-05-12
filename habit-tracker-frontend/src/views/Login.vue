@@ -16,10 +16,8 @@ const handleLogin = async () => {
     });
 
     if (response.status === 200) {
-      // Save token to localStorage or sessionStorage
       localStorage.setItem('jwtToken', response.data.token);
-
-      // Redirect to the dashboard or home page
+      localStorage.setItem('user', JSON.stringify(response.data.user));
       router.push('/dashboard'); 
     }
   } catch (error) {
