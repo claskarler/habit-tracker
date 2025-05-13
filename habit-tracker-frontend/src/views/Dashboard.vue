@@ -16,7 +16,6 @@ import NavMenu from '../components/NavMenu.vue';
       </div>
     </div>
   </div>
-
 </template>
 
 <style scoped>
@@ -29,13 +28,6 @@ import NavMenu from '../components/NavMenu.vue';
     flex: 1;
   }
 
-  .nav-menu {
-    position: fixed;
-    bottom: 30px;
-    margin: 0 10px;
-    left: 0;
-    right: 0;
-    z-index: 20; 
-  }
+  
 
 </style>

@@ -1,10 +1,12 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import Home from '../views/Home.vue'
-import Auth from '../views/Auth.vue'
-import Login from '../views/Login.vue'
-import Register from '../views/Register.vue'
+import Auth from '../views/Auth/Auth.vue'
+import Login from '../views/Auth/Login.vue'
+import Register from '../views/Auth/Register.vue'
 import Dashboard from '../views/Dashboard.vue'
 import HabitDetails from '../views/Habits/HabitDetails.vue'
+import Profile from '../views/Auth/Profile.vue'
+import Habits from '../views/Habits/Habits.vue'
 
 
 const routes = [
@@ -29,9 +31,19 @@ const routes = [
     component: Register
   },
   {
+    path: '/profile',
+    name: 'Profile',
+    component: Profile
+  },
+  {
     path: '/dashboard',
     name: 'Dashboard',
     component: Dashboard
+  },
+  {
+    path: '/habits',
+    name: 'Habits',
+    component: Habits
   },
   {
     path: '/habit/:id',
