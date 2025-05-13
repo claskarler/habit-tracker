@@ -38,32 +38,31 @@ const handleRegister = async () => {
 
 <template>
     <div class="container">
-      <div class="row justify-content-center mt-5">
-        <div class="col-md-6">
-          <form @submit.prevent="handleRegister" class="card p-4">
-            <h3 class="text-center mb-4">Register</h3>
+      <div class="register-container">
+          <form @submit.prevent="handleRegister">
+            <h1 class="text-center">Create an account</h1>
   
-            <div class="mb-3">
-              <label for="username" class="form-label">Username</label>
-              <input type="text" class="form-control" id="username" v-model="username" required />
+            <div class="form-area">
+              <label for="username" class="form-input-label">Username</label>
+              <input type="text" class="form-input" id="username" v-model="username" required />
             </div>
   
-            <div class="mb-3">
-              <label for="email" class="form-label">Email</label>
-              <input type="email" class="form-control" id="email" v-model="email" required />
+            <div class="form-area">
+              <label for="email" class="form-input-label">Email</label>
+              <input type="email" class="form-input" id="email" v-model="email" required />
             </div>
   
-            <div class="mb-3">
-              <label for="password" class="form-label">Password</label>
-              <input type="password" class="form-control" id="password" v-model="password" required />
+            <div class="form-area">
+              <label for="password" class="form-input-label">Password</label>
+              <input type="password" class="form-input" id="password" v-model="password" required />
             </div>
   
-            <div class="mb-3">
-              <label for="confirmPassword" class="form-label">Confirm Password</label>
-              <input type="password" class="form-control" id="confirmPassword" v-model="confirmPassword" required />
+            <div class="form-area">
+              <label for="confirmPassword" class="form-input-label">Confirm Password</label>
+              <input type="password" class="form-input" id="confirmPassword" v-model="confirmPassword" required />
             </div>
   
-            <button type="submit" class="btn btn-primary w-100">Register</button>
+            <button type="submit" class="btn-dark">Register</button>
   
             <div v-if="errorMessage" class="mt-3 alert alert-danger">{{ errorMessage }}</div>
           </form>
@@ -71,7 +70,27 @@ const handleRegister = async () => {
           <div class="text-center mt-3">
             <p>Already have an account? <router-link to="/login">Login here</router-link></p>
           </div>
-        </div>
       </div>
     </div>
   </template>
+
+  <style scoped>
+
+  h1 {
+    margin: 5rem 2rem;
+    font-size: 2.8rem;
+  }
+
+  form {
+      height: 100%; 
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+  }
+
+  .login-container {
+      height: 100vh; 
+      padding: 10px 0;
+  }
+
+</style>

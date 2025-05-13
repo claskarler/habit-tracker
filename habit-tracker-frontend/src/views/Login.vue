@@ -32,23 +32,42 @@ const handleLogin = async () => {
 
 <template>
     <div class="container">
-      <div class="row justify-content-center mt-5">
-        <div class="col-md-6">
-          <form @submit.prevent="handleLogin" class="card p-4">
-            <div class="mb-3">
-              <label for="email" class="form-label">Email</label>
-              <input type="email" class="form-control" id="email" v-model="email" required />
-            </div>
-            <div class="mb-3">
-              <label for="password" class="form-label">Password</label>
-              <input type="password" class="form-control" id="password" v-model="password" required />
-            </div>
-            <button type="submit" class="btn btn-primary w-100">Login</button>
-          </form>
-        </div>
+      <div class="login-container">
+        <form @submit.prevent="handleLogin" class="form">
+          <h1 class="text-center">Welcome back!</h1>
+          <div>
+              <div class="form-area">
+                <label for="email" class="form-input-label">Email</label>
+                <input type="email" class="form-input" id="email" v-model="email" required />
+              </div>
+              <div class="form-area">
+                <label for="password" class="form-input-label">Password</label>
+                <input type="password" class="form-input" id="password" v-model="password" required />
+              </div>
+          </div>
+          <button type="submit" class="btn-dark">Login</button>
+        </form>
       </div>
     </div>
   </template>
 
 <style scoped>
+
+  h1 {
+    margin: 5rem 2rem;
+    font-size: 2.8rem;
+  }
+
+  form {
+      height: 100%; 
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+  }
+
+  .login-container {
+      height: 100vh; 
+      padding: 10px 0;
+  }
+
 </style>
