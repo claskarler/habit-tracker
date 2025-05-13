@@ -1,0 +1,20 @@
+:root {
+  --blue: #6CAED6;
+  --light-blue: #B6DAEF;
+  --green: #52B77C;
+  --lime: #D0E286;
+  --yellow: #FFEE9B;
+  --orange: #E8A476;
+  --red: #EA8183;
+  --pink: #E690AC;
+  --purple: #BB8EDD;
+
+  --light-gray: #AAAAAA;
+  --gray: #6A6A6A;
+  --dark: #2A2A2A;
+
+  }
+
+.btn-dark {
+  background-color: var(--dark);
+}

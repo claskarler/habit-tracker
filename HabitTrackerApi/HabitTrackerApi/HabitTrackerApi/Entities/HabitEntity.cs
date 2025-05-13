@@ -17,6 +17,7 @@ public class HabitEntity
 
     [Column(TypeName = "nvarchar(max)")]
     public string? DaysOfMonthJson { get; set; }
+    public string Color { get; set; } = "blue";
     public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
     public int IconId { get; set; }
 

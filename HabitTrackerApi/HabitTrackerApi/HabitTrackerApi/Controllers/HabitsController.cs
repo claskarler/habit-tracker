@@ -6,6 +6,7 @@ using HabitTrackerApi.Contexts;
 using Microsoft.EntityFrameworkCore;
 using System.Text.Json;
 using HabitTrackerApi.Dtos;
+using System.Drawing;
 
 namespace HabitTrackerApi.Controllers;
 
@@ -59,6 +60,7 @@ public class HabitsController(DataContext context, IHttpContextAccessor httpCont
             DaysOfWeekJson = dto.DaysOfWeek != null ? JsonSerializer.Serialize(dto.DaysOfWeek) : null,
             DaysOfMonthJson = dto.DaysOfMonth != null ? JsonSerializer.Serialize(dto.DaysOfMonth) : null,
             IconId = dto.IconId,
+            Color = dto.Color,
             UserId = userId,
             CreatedAt = DateTime.UtcNow
         };
@@ -87,6 +89,7 @@ public class HabitsController(DataContext context, IHttpContextAccessor httpCont
         habit.ScheduleType = dto.ScheduleType;
         habit.DaysOfWeekJson = dto.DaysOfWeek != null ? JsonSerializer.Serialize(dto.DaysOfWeek) : null;
         habit.DaysOfMonthJson = dto.DaysOfMonth != null ? JsonSerializer.Serialize(dto.DaysOfMonth) : null;
+        habit.Color = dto.Color;
         habit.IconId = dto.IconId;
 
         await _context.SaveChangesAsync();

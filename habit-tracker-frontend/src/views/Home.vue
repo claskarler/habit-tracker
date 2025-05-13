@@ -3,10 +3,16 @@ import { useRouter } from 'vue-router';
 </script>
 
 <template>
-  <h1>Home</h1>
-  <router-link to="/register">Register</router-link>
-  <router-link to="/login">Login</router-link>
+  <div class="home-card">
+    
+  </div>
+  <button class="btn-dark">
+    <router-link to="/auth">Start</router-link>
+  </button>
 </template>
 
 <style scoped>
+.home-card {
+    background-color: ;
+}
 </style>

@@ -7,5 +7,6 @@ public class CreateHabitRequest
     public string ScheduleType { get; set; } = null!;
     public List<string>? DaysOfWeek { get; set; }
     public List<int>? DaysOfMonth { get; set; }
+    public string Color { get; set; } = "blue";
     public int IconId { get; set; }
 }
