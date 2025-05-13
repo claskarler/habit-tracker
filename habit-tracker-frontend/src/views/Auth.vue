@@ -1,5 +1,5 @@
 <script setup>
-import { useRouter } from 'vue-router';
+
 </script>
 
 <template>
@@ -35,7 +35,6 @@ import { useRouter } from 'vue-router';
 
   .habit-tracker {
     background-color: var(--pink);
-    border: 1px solid var(--dark);
     width: 200px;
     height: 200px;
     border-radius: 50%;
