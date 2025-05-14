@@ -124,6 +124,7 @@ public class HabitsController(DataContext context, IHttpContextAccessor httpCont
         ScheduleType = habit.ScheduleType,
         DaysOfWeek = habit.DaysOfWeekJson != null ? JsonSerializer.Deserialize<List<string>>(habit.DaysOfWeekJson) : null,
         DaysOfMonth = habit.DaysOfMonthJson != null ? JsonSerializer.Deserialize<List<int>>(habit.DaysOfMonthJson) : null,
+        Color = habit.Color,
         Icon = new IconDto
         {
             Id = habit.Icon.Id,

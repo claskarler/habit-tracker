@@ -8,7 +8,7 @@ public class HabitDto
     public string ScheduleType { get; set; } = string.Empty;
     public List<string>? DaysOfWeek { get; set; }
     public List<int>? DaysOfMonth { get; set; }
-    public string Color { get; set; } 
+    public string Color { get; set; } = string.Empty;
     public IconDto Icon { get; set; } = new();
     public DateTime CreatedAt { get; set; }
 }
