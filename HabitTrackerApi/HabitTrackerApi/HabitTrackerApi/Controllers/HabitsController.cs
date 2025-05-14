@@ -100,14 +100,19 @@ public class HabitsController(DataContext context, IHttpContextAccessor httpCont
     public async Task<IActionResult> DeleteHabit(int id)
     {
         var userId = GetUserId();
-        var habit = await _context.Habits.FirstOrDefaultAsync(h => h.Id == id && h.UserId == userId);
+
+        var habit = await _context.Habits
+            .Include(h => h.HabitEntries)
+            .FirstOrDefaultAsync(h => h.Id == id && h.UserId == userId);
 
         if (habit == null)
             return NotFound();
 
-        _context.Habits.Remove(habit);
-        await _context.SaveChangesAsync();
+        _context.HabitEntries.RemoveRange(habit.HabitEntries);
 
+        _context.Habits.Remove(habit);
+
+        await _context.SaveChangesAsync();
         return NoContent();
     }
 
