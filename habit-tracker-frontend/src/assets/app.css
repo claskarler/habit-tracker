@@ -80,3 +80,10 @@ button {
   background-color: var(--green);
   border-radius: 15px;
 }
+
+.btn-red {
+  color: var(--dark);
+  margin-top: 0.7rem;
+  background-color: var(--red);
+  border-radius: 15px;
+}

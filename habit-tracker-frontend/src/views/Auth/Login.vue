@@ -15,10 +15,15 @@ const handleLogin = async () => {
       password: password.value,
     });
 
+    console.log(response.data.user)
+
     if (response.status === 200) {
       localStorage.setItem('jwtToken', response.data.token);
       localStorage.setItem('user', JSON.stringify(response.data.user));
-      router.push('/dashboard'); 
+
+      router.push('/dashboard').then(() => {
+        router.go(0);
+      });
     }
   } catch (error) {
     if (error.response && error.response.data) {

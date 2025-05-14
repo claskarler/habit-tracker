@@ -9,7 +9,6 @@ import NavMenu from '../components/NavMenu.vue';
   <div class="container">
     <div class="content">
       <h1>Dashboard</h1>
-      <LogoutButton />
       <HabitList />
       <div class="nav-menu">
         <NavMenu />
