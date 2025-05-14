@@ -5,7 +5,7 @@ defineProps({
 </script>
 
 <template>
-  <router-link :to="`/habit/${habit.id}`" class="btn btn-outline-primary">
+  <router-link :to="`/habits/edit/${habit.id}`" class="btn-">
     {{ habit.name }}
   </router-link>
 </template>

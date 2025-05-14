@@ -1,13 +1,23 @@
 <script setup>
-import { useRouter } from 'vue-router';
+import { ref } from 'vue';
+const showAddMenu = ref(false);
 
-
+const toggleAddMenu = () => {
+    showAddMenu.value = !showAddMenu.value;
+}
 </script>
 
 <template>
+    <div v-if="showAddMenu" class="dark-overlay" @click="toggleAddMenu"></div>
+    <div v-if="showAddMenu" class="add-menu">
+            <router-link to="/habits/create" class="router-link">
+                <i class="fa-solid fa-plus"></i>
+                <h3>New habit</h3>
+            </router-link>
+    </div>
     <div class="nav-menu">
-        <button class="add-button">
-            <i class="fa-solid fa-plus"></i>
+        <button class="add-button" @click="toggleAddMenu">
+            <i :class="['fa-solid', 'fa-plus', { 'rotated': showAddMenu }]"></i>
         </button>
         <div class="menu">
             <div class="menu-group">
@@ -32,6 +42,40 @@ import { useRouter } from 'vue-router';
 </template>
 
 <style scoped>
+    .dark-overlay {
+        position: fixed;
+        inset: 0;
+        background-color: rgba(0, 0, 0, 0.4);
+        z-index: 2;
+    }
+
+    .add-menu {
+        position: relative;
+        z-index: 10;
+        background-color: var(--dark);
+        margin: 0 10px;
+        color: white;
+        border-radius: 15px;
+        margin-bottom: 30px;
+        padding: 20px 20px;
+    }
+
+    .router-link {
+        display: flex;
+        align-items: center;
+    }
+    .add-menu i {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 60px;
+        height: 60px;
+        background-color: var(--green);
+        border-radius: 50%;
+        font-size: 1.5rem;
+        margin-right: 20px;
+    }
+
     .nav-menu {
         position: relative;
         display: flex;
@@ -46,19 +90,22 @@ import { useRouter } from 'vue-router';
         display: flex;
         justify-content: center;
         align-items: center;
-        width: 60px;
-        height: 60px;
+        width: 65px;
+        height: 65px;
         text-align: center;
         background-color: var(--blue);
         color: var(--dark);
-        outline: 4px solid white;
-        border: 3px solid var(--dark);
+        border: 5px solid var(--dark);
         border-radius: 50%;
         font-size: 1.5rem;
     }
     
     .add-button, i {
         color: white;
+        transition: transform 0.3s ease;
+    }
+    .rotated {
+        transform: rotate(45deg);
     }
 
     .menu {

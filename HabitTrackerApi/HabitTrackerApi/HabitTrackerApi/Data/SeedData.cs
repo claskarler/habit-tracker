@@ -23,7 +23,7 @@ public static class SeedData
                     new IconEntity { Name = "Pencil", CssClass = "fa-solid fa-pencil" },
                     new IconEntity { Name = "Lightbulb", CssClass = "fa-regular fa-lightbulb" },
                     new IconEntity { Name = "Trash Can", CssClass = "fa-regular fa-trash-can" },
-                    new IconEntity { Name = "Car", CssClass = "fa-regular fa-car" },
+                    new IconEntity { Name = "Car", CssClass = "fa-solid fa-car" },
                     new IconEntity { Name = "Music", CssClass = "fa-solid fa-music" },
                     new IconEntity { Name = "Bath", CssClass = "fa-solid fa-bath" },
                     new IconEntity { Name = "Money Bill", CssClass = "fa-solid fa-money-bill" },

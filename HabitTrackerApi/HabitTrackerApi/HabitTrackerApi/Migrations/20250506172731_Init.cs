@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Drawing;
 using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
@@ -53,6 +54,7 @@ namespace HabitTrackerApi.Migrations
                     ScheduleType = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     DaysOfWeekJson = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     DaysOfMonthJson = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Color = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
                     IconId = table.Column<int>(type: "int", nullable: false)
                 },

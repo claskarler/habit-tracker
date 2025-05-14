@@ -7,6 +7,7 @@ import Dashboard from '../views/Dashboard.vue'
 import HabitDetails from '../views/Habits/HabitDetails.vue'
 import Profile from '../views/Auth/Profile.vue'
 import Habits from '../views/Habits/Habits.vue'
+import EditHabit from '../views/Habits/EditHabit.vue'
 
 
 const routes = [
@@ -46,9 +47,19 @@ const routes = [
     component: Habits
   },
   {
-    path: '/habit/:id',
+    path: '/habits/:id',
     name: 'HabitDetails',
     component: HabitDetails
+  },
+  {
+    path: '/habits/edit/:id',
+    name: 'EditHabit',
+    component: EditHabit
+  },
+  {
+    path: '/habits/create',
+    name: 'CreateHabit',
+    component: EditHabit
   }
 ];
 

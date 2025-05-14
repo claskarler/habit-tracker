@@ -1,9 +1,17 @@
 <script setup>
-
+import NavMenu from '../../components/NavMenu.vue';
 </script>
 
 <template>
-    <h1>Profile view</h1>
+    <div class="container">
+    <div class="content">
+      <h1>Profile</h1>
+      
+      <div class="nav-menu">
+        <NavMenu />
+      </div>
+    </div>
+  </div>
 </template>
 
 <style scoped>

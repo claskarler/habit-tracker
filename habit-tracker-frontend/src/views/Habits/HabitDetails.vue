@@ -18,7 +18,16 @@ onMounted(async () => {
     <h1>{{ habit.name }}</h1>
     <p>Target Count: {{ habit.targetCount }}</p>
     <p>Schedule Type: {{ habit.scheduleType }}</p>
+
+    <p v-if="habit.daysOfWeek && habit.daysOfWeek.length > 0">
+      Days of the Week: {{ habit.daysOfWeek.join(', ') }}
+    </p>
+
+    <p v-if="habit.daysOfMonth && habit.daysOfMonth.length > 0">
+      Days of the Month: {{ habit.daysOfMonth.join(', ') }}
+    </p>
   </div>
+  
   <div v-else>
     <p>Loading habit...</p>
   </div>
