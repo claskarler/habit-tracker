@@ -1,11 +1,11 @@
 <script setup>
 import { ref, watch, onMounted } from 'vue'
-import { useRoute } from 'vue-router'
+import { useRoute, useRouter } from 'vue-router'
 import NavMenu from '../../components/NavMenu.vue';
 import axiosInstance from '../../api/axios';
 
-
 const route = useRoute()
+const router = useRouter()
 const icons = ref([])
 
 const form = ref({
@@ -20,7 +20,7 @@ const form = ref({
 
 const daysOfWeek = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
 const daysOfMonth = Array.from({ length: 31 }, (_, i) => i + 1);
-const availableColors = ['blue', 'light-blue', 'green', 'lime', 'yellow', 'orange', 'red', 'pink', 'purple', 'gray'];
+const availableColors = ['blue', 'light-blue', 'green', 'lime', 'yellow', 'orange', 'red', 'pink', 'purple', 'light-gray'];
 
 watch(() => form.value.scheduleType, (newType) => {
   if (newType !== 'weekly') {
@@ -54,7 +54,7 @@ const fetchHabitById = async (id) => {
     form.value.scheduleType = habit.scheduleType
     form.value.daysOfWeek = habit.daysOfWeek
     form.value.daysOfMonth = habit.daysOfMonth 
-    form.value.iconId = habit.iconId
+    form.value.iconId = habit.icon.id
     form.value.color = habit.color
   } catch (error) {
     console.error(`Failed to fetch habit with ID ${id}:`, error)
@@ -75,6 +75,7 @@ const createHabit = async () => {
         console.log(form.value)
     const response = await axiosInstance.post('/habits', form.value);
     console.log('Habit created:', response.data);
+    router.push('/dashboard')
   } catch (error) {
     console.error('Error creating habit:', error);
   }
@@ -84,6 +85,7 @@ const updateHabit = async () => {
   try {
     const response = await axiosInstance.put(`/habits/${route.params.id}`, form.value)
     console.log('Habit updated:', response.data)
+    router.push('/dashboard')
   } catch (error) {
     console.error('Error updating habit:', error)
   }
@@ -94,7 +96,6 @@ const updateHabit = async () => {
 
 <template>
     <div class="container">
-        TODO: Fix color in backend
         <div class="content">
             <form @submit.prevent="handleFormSubmit" class="form">
                 <h1 v-if="route.params.id">Edit habit</h1>
@@ -158,7 +159,7 @@ const updateHabit = async () => {
                             v-for="color in availableColors"
                             :key="color"
                             class="color-circle"
-                            :class="{ selected: form.color === color }"
+                            :class="{ checked: form.color === color }"
                             :style="{ backgroundColor: `var(--${color})` }"
                             >
                             <input type="radio" :value="color" v-model="form.color" />
@@ -168,16 +169,17 @@ const updateHabit = async () => {
                 </div>
 
                 <div class="form-icon">
-                    <label>Select Icon:</label>
-                    <div class="icon-picker">
-                        <div class="icon-options">
-                            <div v-for="icon in icons" :key="icon.id" class="icon">
-                                <i :class="icon.cssClass"></i>
-                                <input type="radio" :value="icon.id" v-model="form.iconId" />
-                            </div>
-                        </div>
+                  <label>Select Icon:</label>
+                  <div class="icon-picker">
+                    <div class="icon-options">
+                      <label v-for="icon in icons" :key="icon.id" class="icon" :class="{ checked: form.iconId === icon.id }" :style="{'--form-color': form.iconId === icon.id ? `var(--${form.color})` : ''}">
+                        <i :class="icon.cssClass"></i>
+                        <input type="radio" :value="icon.id" v-model="form.iconId" />
+                      </label>
                     </div>
+                  </div>
                 </div>
+
 
                 <button class="btn-green" type="submit">Save Habit</button>
             </form>
@@ -274,6 +276,7 @@ const updateHabit = async () => {
   border: 1px solid var(--dark);
   border-radius: 15px;
   gap: 1rem;
+  margin-bottom: 20px;
 }
 
 .color-preview {
@@ -304,7 +307,7 @@ const updateHabit = async () => {
   display: none;
 }
 
-.color-circle.selected {
+.color-circle.checked {
   border: 2px solid var(--dark);
 }
 
@@ -312,6 +315,35 @@ const updateHabit = async () => {
     margin-bottom: 120px;
 }
 
+.icon-options {
+  display: grid;
+  gap: 10px;
+  width: 100%;
+  grid-template-columns: repeat(5, auto); 
+  justify-content: space-between;
+  border: 1px solid var(--dark);
+  padding: 10px;
+  border-radius: 15px;
+  margin-bottom: 10px;
+}
 
+.icon-options input {
+  display: none;
+}
+
+.icon {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  font-size: 1.2rem;
+  height: 40px;
+  width: 40px;
+  text-align: center;
+}
+
+.icon.checked {
+  background-color: var(--form-color);
+  border-radius: 15%;
+}
 
 </style>

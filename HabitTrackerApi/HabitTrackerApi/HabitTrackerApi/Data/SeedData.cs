@@ -38,9 +38,10 @@ public static class SeedData
                     new IconEntity { Name = "Utensils", CssClass = "fa-solid fa-utensils" },
                     new IconEntity { Name = "Bed", CssClass = "fa-solid fa-bed" },
                     new IconEntity { Name = "Language", CssClass = "fa-solid fa-language" },
-                    new IconEntity { Name = "Shopping", CssClass = "fa-solid fa-shopping" },
+                    new IconEntity { Name = "Shopping", CssClass = "fa-solid fa-cart-shopping" },
                     new IconEntity { Name = "Film", CssClass = "fa-solid fa-film" },
                     new IconEntity { Name = "Newspaper", CssClass = "fa-solid fa-newspaper" },
+                    new IconEntity { Name = "Dumbbell", CssClass = "fa-solid fa-dumbbell" },
                 };
 
             context.Icons.AddRange(icons);
