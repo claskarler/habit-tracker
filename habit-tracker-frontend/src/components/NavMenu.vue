@@ -24,7 +24,7 @@ const toggleAddMenu = () => {
                 <router-link to="/dashboard">
                     <i class="fa-solid fa-house"></i>
                 </router-link>
-                <router-link to="/overview">
+                <router-link to="/habits/overview">
                     <i class="fa-regular fa-calendar"></i>
                 </router-link>
             </div>

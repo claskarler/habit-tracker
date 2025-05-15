@@ -8,6 +8,7 @@ import HabitDetails from '../views/Habits/HabitDetails.vue'
 import Profile from '../views/Auth/Profile.vue'
 import Habits from '../views/Habits/Habits.vue'
 import EditHabit from '../views/Habits/EditHabit.vue'
+import HabitsMonthlyOverview from '../views/Habits/HabitMonthlyOverview.vue'
 
 
 const routes = [
@@ -60,7 +61,12 @@ const routes = [
     path: '/habits/create',
     name: 'CreateHabit',
     component: EditHabit
-  }
+  },
+  {
+    path: '/habits/overview',
+    name: 'Overview',
+    component: HabitsMonthlyOverview
+  },
 ];
 
 const router = createRouter({

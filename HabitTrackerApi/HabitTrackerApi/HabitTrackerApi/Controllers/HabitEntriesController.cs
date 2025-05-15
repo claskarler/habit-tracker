@@ -53,6 +53,25 @@ public class HabitEntriesController(DataContext context, IHttpContextAccessor ht
         return Ok();
     }
 
+    [HttpPut("{entryId}")]
+    public async Task<IActionResult> UpdateEntry(int entryId, UpdateHabitEntryRequest dto)
+    {
+        var userId = GetUserId();
+
+        var entry = await _context.HabitEntries
+            .Include(e => e.Habit)
+            .FirstOrDefaultAsync(e => e.Id == entryId && e.Habit.UserId == userId);
+
+        if (entry == null)
+            return NotFound("Habit entry not found or unauthorized.");
+
+        entry.ActualCount = dto.ActualCount;
+
+        await _context.SaveChangesAsync();
+
+        return Ok();
+    }
+
     [HttpGet]
     public async Task<ActionResult<IEnumerable<HabitEntryWithHabitDto>>> GetAllEntries()
     {
@@ -97,6 +116,26 @@ public class HabitEntriesController(DataContext context, IHttpContextAccessor ht
             Id = e.Id,
             Date = e.Date,
             ActualCount = e.ActualCount
+        }).ToList();
+    }
+
+    [HttpGet("today")]
+    public async Task<ActionResult<IEnumerable<HabitEntryDto>>> GetTodaysEntries()
+    {
+        var userId = GetUserId();
+        var today = DateTime.UtcNow.Date;
+
+        var entries = await _context.HabitEntries
+            .Include(e => e.Habit)
+            .Where(e => e.Habit.UserId == userId && e.Date.Date == today)
+            .ToListAsync();
+
+        return entries.Select(e => new HabitEntryDto
+        {
+            Id = e.Id,
+            Date = e.Date,
+            ActualCount = e.ActualCount,
+            HabitId = e.HabitId
         }).ToList();
     }
 

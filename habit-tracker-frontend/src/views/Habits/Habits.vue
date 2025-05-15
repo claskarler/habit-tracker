@@ -7,7 +7,7 @@
 
     <div class="container">
     <div class="content">
-        <h1>Habits view</h1>
+        <h1>Your habits:</h1>
         <HabitList />
         <div class="nav-menu">
             <NavMenu />
@@ -17,5 +17,11 @@
 </template>
 
 <style scoped>
+h1 {
+    text-align: center;
+}
 
+.container {
+    padding-bottom: 150px;
+}
 </style>

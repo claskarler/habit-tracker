@@ -1,5 +1,5 @@
 <script setup>
-import HabitList from '../components/Habits/HabitList.vue';
+import TodayHabits from '../components/Habits/TodayHabits.vue';
 import LogoutButton from '../components/LogoutButton.vue';
 import NavMenu from '../components/NavMenu.vue';
 
@@ -8,8 +8,7 @@ import NavMenu from '../components/NavMenu.vue';
 <template>
   <div class="container">
     <div class="content">
-      <h1>Dashboard</h1>
-      <HabitList />
+      <TodayHabits />
       <div class="nav-menu">
         <NavMenu />
       </div>
@@ -18,6 +17,10 @@ import NavMenu from '../components/NavMenu.vue';
 </template>
 
 <style scoped>
+.container {
+  padding-bottom: 150px;
+}
+
 .content {
     display: flex;
     flex-direction: column;
