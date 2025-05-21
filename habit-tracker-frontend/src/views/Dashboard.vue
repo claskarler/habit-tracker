@@ -1,6 +1,5 @@
 <script setup>
 import TodayHabits from '../components/Habits/TodayHabits.vue';
-import LogoutButton from '../components/LogoutButton.vue';
 import NavMenu from '../components/NavMenu.vue';
 
 </script>

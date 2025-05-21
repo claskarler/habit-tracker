@@ -10,9 +10,7 @@ const habitStore = useHabitStore()
 
 onMounted(async () => {
   await habitStore.fetchHabits()
-  console.log(habitStore.habits)
   await fetchTodaysEntries()
-  console.log(habitEntries.value)
 })
 
 const today = new Date()
