@@ -28,6 +28,7 @@ onMounted(() => {
     margin: 10px 0;
     border-radius: 15px;
     overflow: hidden;
+    border: 1px solid var(--dark);
   }
 
   .habit-link {

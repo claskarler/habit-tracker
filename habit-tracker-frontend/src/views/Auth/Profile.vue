@@ -145,6 +145,10 @@ const changePassword = async () => {
 </template>
 
 <style scoped>
+  h1 {
+    text-align: center;
+  }
+
  .logout-area {
   padding-bottom: 100px;
  }

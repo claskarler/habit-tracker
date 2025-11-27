@@ -87,30 +87,47 @@ const markHabitDone = async (habitId, actualCount) => {
 </script>
 
 <template>
-    <div class="habits-container">
-        <h1>Todays habits:</h1>
-        <div v-for="habit in todaysHabits" :key="habit.id" class="habit" :style="{ backgroundColor: `var(--${habit.color})` }" >
-            <i :class="habit.icon.cssClass"></i>
-            <div class="habit-info">
-                <h3>{{ habit.name }}</h3>
-                <div class="checkboxes">
-                    <label v-for="i in habit.targetCount" :key="i" class="habit-checkbox">
-                        <input type="checkbox"
-                            :checked="i <= (entryCounts[habit.id] || 0)"
-                            @change="() => handleCheckboxChange(habit.id, i)" 
-                            />
-                    </label>
-                </div>
-            </div>
-        </div>
+  <div class="habits-container">
+    <h1>Today's habits:</h1>
+
+    <div v-if="todaysHabits.length === 0" class="no-habits">
+      <p>No habits scheduled for today.</p>
     </div>
+
+    <div v-else>
+      <div
+        v-for="habit in todaysHabits"
+        :key="habit.id"
+        class="habit"
+        :style="{ backgroundColor: `var(--${habit.color})` }"
+      >
+        <i :class="habit.icon.cssClass"></i>
+        <div class="habit-info">
+          <h3>{{ habit.name }}</h3>
+          <div class="checkboxes">
+            <label
+              v-for="i in habit.targetCount"
+              :key="i"
+              class="habit-checkbox"
+            >
+              <input
+                type="checkbox"
+                :checked="i <= (entryCounts[habit.id] || 0)"
+                @change="() => handleCheckboxChange(habit.id, i)"
+              />
+            </label>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </template>
 
 <style scoped>
 
     h1 {
         text-align: center;
-        font-size: 2.4rem;
+      
         font-weight: 600;
     }
     .habit {
@@ -121,9 +138,17 @@ const markHabitDone = async (habitId, actualCount) => {
         align-items: center;
         justify-content: space-between;
         color: white;
+        border: 1px solid var(--dark);
     }
     .habit i {
         font-size: 50px;
+    }
+
+    .no-habits {
+      text-align: center;
+      margin-top: 2rem;
+      color: var(--dark);
+      opacity: 0.8;
     }
 
     .habit-info {

@@ -192,6 +192,10 @@ const updateHabit = async () => {
 
 
 <style scoped>
+h1 {
+  text-align: center;
+}
+
 .pill-wrapper-horizontal {
   display: flex;
   align-items: center;
